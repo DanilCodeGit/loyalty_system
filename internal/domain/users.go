@@ -1,7 +1,6 @@
-package entity
+package domain
 
-type User struct {
-	ID       int    `json:"id"`
+type Users struct {
 	Login    string `json:"login"`
 	Password string `json:"password"`
 }
