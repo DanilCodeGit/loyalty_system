@@ -1,18 +1,31 @@
 package conf
 
-import "fmt"
+import (
+	"github.com/ilyakaznacheev/cleanenv"
+	"github.com/pkg/errors"
+)
 
-type DBConfig struct {
-	Host     string `yaml:"host"`
-	Port     uint16 `yaml:"port"`
-	Database string `yaml:"database"`
-	User     string `yaml:"user"`
-	Password string `yaml:"password"`
+type Config struct {
+	Server struct {
+		Host string `yaml:"host" env-description:"server host" env-default:"localhost"`
+		Port string `yaml:"port" env-description:"server port" env-default:"8080"`
+	} `yaml:"server"`
+	Database struct {
+		Host     string `yaml:"host" env-description:"db host" env-default:"localhost"`
+		Port     uint16 `yaml:"port" env-description:"db port" env-default:"5432"`
+		Database string `yaml:"database" env-description:"db name" env-default:"postgres"`
+		User     string `yaml:"user" env-description:"db user" env-default:"postgres"`
+		Password string `yaml:"password" env-description:"db password" env-default:"postgres"`
+	} `yaml:"database"`
 }
 
-var dsn = fmt.Sprintf("postgres://pqgotest:password@localhost/pqgotest?sslmode=verify-full")
+var cfg Config
 
-type ServerConfig struct {
-	Host string
-	Post string
+func InitConfig() error {
+	err := cleanenv.ReadConfig("/home/danil/programming/loyalty_system/go-musthave-diploma-tpl/internal/conf/conf.yml", &cfg)
+	if err != nil {
+		return errors.WithMessage(err, "read config file")
+	}
+
+	return nil
 }

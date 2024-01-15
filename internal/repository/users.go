@@ -6,14 +6,14 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-type User struct {
+type Users struct {
 	db *pgx.Conn
 }
 
-func NewDB(db *pgx.Conn) User {
-	return User{db: db}
+func NewDB(db *pgx.Conn) Users {
+	return Users{db: db}
 }
 
-func (u User) Registration(ctx context.Context, user entity.User) error {
+func (u Users) Registration(ctx context.Context, user entity.User) error {
 	return nil
 }
