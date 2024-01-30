@@ -46,6 +46,5 @@ func ValidateToken(w http.ResponseWriter, r *http.Request) (err error) {
 	if token == nil {
 		fmt.Fprintf(w, "invalid token")
 	}
-
 	return nil
 }
