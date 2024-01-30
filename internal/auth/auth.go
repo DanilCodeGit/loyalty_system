@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const TokenExp = time.Hour * 3
+const TokenExp = time.Hour * 4
 
 var SecretKey = []byte("SecretYouShouldHide")
 
