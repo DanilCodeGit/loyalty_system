@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
+	"github.com/DanilCodeGit/loyalty_system/internal/domain"
 	"github.com/pkg/errors"
-	"v2/internal/domain"
 )
 
 type UsersRepo interface {

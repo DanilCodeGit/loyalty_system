@@ -2,12 +2,12 @@ package auth
 
 import (
 	"fmt"
+	"github.com/DanilCodeGit/loyalty_system/internal/domain"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/pkg/errors"
 	"log"
 	"net/http"
 	"time"
-	"v2/internal/domain"
 )
 
 const TokenExp = time.Hour * 3

@@ -1,9 +1,9 @@
 package routes
 
 import (
+	"github.com/DanilCodeGit/loyalty_system/internal/controller"
 	"github.com/go-chi/chi/v5"
 	"net/http"
-	"v2/internal/controller"
 )
 
 type Controllers struct {

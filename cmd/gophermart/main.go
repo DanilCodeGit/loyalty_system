@@ -2,14 +2,14 @@ package main
 
 import (
 	"context"
+	"github.com/DanilCodeGit/loyalty_system/internal/conf"
+	"github.com/DanilCodeGit/loyalty_system/internal/controller"
+	"github.com/DanilCodeGit/loyalty_system/internal/database"
+	"github.com/DanilCodeGit/loyalty_system/internal/repository"
+	"github.com/DanilCodeGit/loyalty_system/internal/routes"
+	"github.com/DanilCodeGit/loyalty_system/internal/service"
 	"log"
 	"net/http"
-	"v2/internal/conf"
-	"v2/internal/controller"
-	"v2/internal/database"
-	"v2/internal/repository"
-	"v2/internal/routes"
-	"v2/internal/service"
 )
 
 func main() {

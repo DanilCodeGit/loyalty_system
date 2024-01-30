@@ -2,11 +2,11 @@ package repository
 
 import (
 	"context"
+	"github.com/DanilCodeGit/loyalty_system/internal/database"
+	"github.com/DanilCodeGit/loyalty_system/internal/domain"
+	"github.com/DanilCodeGit/loyalty_system/internal/entity"
 	"github.com/jackc/pgx/v5"
 	"github.com/pkg/errors"
-	"v2/internal/database"
-	"v2/internal/domain"
-	"v2/internal/entity"
 )
 
 type Users struct {

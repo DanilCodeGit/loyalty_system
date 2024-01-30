@@ -3,11 +3,11 @@ package controller
 import (
 	"context"
 	"encoding/json"
+	"github.com/DanilCodeGit/loyalty_system/internal/auth"
+	"github.com/DanilCodeGit/loyalty_system/internal/domain"
 	"github.com/pkg/errors"
 	"net/http"
 	"strings"
-	"v2/internal/auth"
-	"v2/internal/domain"
 )
 
 type UserService interface {
