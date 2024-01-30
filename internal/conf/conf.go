@@ -5,6 +5,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const DSN = "postgresql://user:user@localhost:5432/postgres"
+
 type Config struct {
 	Server struct {
 		Host string `yaml:"host" env-description:"server host" env-default:"localhost"`
@@ -22,7 +24,7 @@ type Config struct {
 var cfg Config
 
 func InitConfig() error {
-	err := cleanenv.ReadConfig("/home/danil/programming/loyalty_system/go-musthave-diploma-tpl/internal/conf/conf.yml", &cfg)
+	err := cleanenv.ReadConfig("./internal/conf/conf.yml", &cfg)
 	if err != nil {
 		return errors.WithMessage(err, "read config file")
 	}

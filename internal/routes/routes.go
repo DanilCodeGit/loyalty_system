@@ -1,16 +1,18 @@
 package routes
 
 import (
-	"github.com/gorilla/mux"
+	"github.com/go-chi/chi/v5"
 	"net/http"
+	"v2/internal/controller"
 )
 
 type Controllers struct {
+	UsersController controller.Users
 }
 
-func HandlerHTTP(c Controllers) http.Handler {
-	muxerHTTP := mux.NewRouter()
-	muxerHTTP.Handle("/users/registration")
-
-	return muxerHTTP
+func HandlersHTTP(c Controllers) http.Handler {
+	r := chi.NewRouter()
+	r.HandleFunc("/users/registration", c.UsersController.RegistrationHandler)
+	r.HandleFunc("/users/auth", c.UsersController.AuthHandler)
+	return r
 }

@@ -2,11 +2,13 @@ package service
 
 import (
 	"context"
-	"github.com/DanilCodeGit/loyalty_system/go-musthave-diploma-tpl/internal/entity"
+	"github.com/pkg/errors"
+	"v2/internal/domain"
 )
 
 type UsersRepo interface {
-	Registration(ctx context.Context, user entity.User) error
+	Registration(ctx context.Context, user domain.Users) error
+	IsExists(ctx context.Context, user domain.Users) error
 }
 
 type Users struct {
@@ -19,6 +21,26 @@ func NewUsers(repo UsersRepo) Users {
 	}
 }
 
-func (u Users) Registration(ctx context.Context, user entity.User) error {
+func (u Users) Registration(ctx context.Context, user domain.Users) error {
+	err := u.r.IsExists(ctx, user)
+	if err != nil {
+		return errors.WithMessage(err, "user already exists")
+	}
+	err = u.r.Registration(ctx, user)
+	if err != nil {
+		return errors.WithMessage(err, "user service")
+	}
+	//_, err = auth.GenerateJWT(user)
+	//if err != nil {
+	//	return err
+	//}
+	return nil
+}
+
+func (u Users) Authentication(ctx context.Context, user domain.Users) error {
+	err := u.r.IsExists(ctx, user)
+	if err == nil {
+		return errors.WithMessage(err, "User does not exists")
+	}
 	return nil
 }
